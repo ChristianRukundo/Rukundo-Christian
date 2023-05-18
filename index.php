@@ -1,17 +1,16 @@
-<?php include 'php/update.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Update</title>
+	<title>Create</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<div class="container">
-		<form action="php/update.php" 
+		<form action="php/create.php" 
 		      method="post">
             
-		   <h4 class="display-4 text-center">Update</h4><hr><br>
+		   <h4 class="display-4 text-center">Create</h4><hr><br>
 		   <?php if (isset($_GET['error'])) { ?>
 		   <div class="alert alert-danger" role="alert">
 			  <?php echo $_GET['error']; ?>
@@ -23,7 +22,9 @@
 		           class="form-control" 
 		           id="name" 
 		           name="name" 
-		           value="<?=$row['name'] ?>" >
+		           value="<?php if(isset($_GET['name']))
+		                           echo($_GET['name']); ?>" 
+		           placeholder="Enter name">
 		   </div>
 
 		   <div class="form-group">
@@ -32,16 +33,14 @@
 		           class="form-control" 
 		           id="email" 
 		           name="email" 
-		           value="<?=$row['email'] ?>" >
+		           value="<?php if(isset($_GET['email']))
+		                           echo($_GET['email']); ?>"
+		           placeholder="Enter email">
 		   </div>
-		   <input type="text" 
-		          name="id"
-		          value="<?=$row['id']?>"
-		          hidden >
 
 		   <button type="submit" 
-		           class="btn btn-primary"
-		           name="update">Update</button>
+		          class="btn btn-primary"
+		          name="create">Create</button>
 		    <a href="read.php" class="link-primary">View</a>
 	    </form>
 	</div>
